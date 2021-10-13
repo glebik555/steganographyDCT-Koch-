@@ -5,11 +5,11 @@ import (
 	"path"
 )
 
+/* Image size - power of two, degree - the number of G components of pixels,
+into which the message size will be written.
+A message is written to the rest of the pixels using the Koch algorithm.
+On the decryption side, a similar algorithm */
 
-/*Размер картинки - степень двойки,
-степень - кол-во G компонент пикселей, в которые запишется размер сообщения.
-В остальные пиксели записывается сообщение алгоритмом Коха.
-На расшифровывающей стороне аналогичный алгоритм*/
 
 
 func main(){

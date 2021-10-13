@@ -228,7 +228,7 @@ func insertMessage(message []uint, dct [][]float64, img image.Image, epsilon flo
 	once := 0
 	for y := 0; y < height; y++ {
 		for x := 0; x < width; x++ {
-			if countOfBitPlace < len(binSizeM) { // Запись двоичного числа, значение которого равно размеру сообщения, которое идет сразу после размера.
+			if countOfBitPlace < len(binSizeM) { // Writing a binary number whose value is equal to the size of the message immediately following the size.
 				if placeForMessageSize-(y*x+x+len(binSizeM)) > 0 {
 					pixels[y][x].B &= 0xFE
 					fmt.Print("0")
@@ -244,7 +244,7 @@ func insertMessage(message []uint, dct [][]float64, img image.Image, epsilon flo
 					}
 				}
 			} else {
-				if (countOfMessage < len(message)) && countOfMessage <= pow { // Записывается само сообщение с помощью алгоритма Коха
+				if (countOfMessage < len(message)) && countOfMessage <= pow { // Write message w/ Koch's algorithm
 					if once == 0 {
 						fmt.Println("")
 						once++
@@ -303,14 +303,14 @@ func extractMessage(pixelsRec [][]Pixel, imgRec image.Image, dct [][]float64, ep
 	boundsRec := imgRec.Bounds()
 	widthRec, heightRec := boundsRec.Max.X, boundsRec.Max.Y
 	placeForMessageRec, _ := calculateSize(widthRec * heightRec)
-	countOfSymbolRec := 0   // Число бит зашифрованного сообщения
-	countOfSizeMessage := 0 // Чисто бит пространства для сообщения
+	countOfSymbolRec := 0   // The number of bits in the encrypted message
+	countOfSizeMessage := 0 // Pure bit of space for message
 
 	var lengthOfMessageInt int64
 
 	var lengthOfMessageBin []string
 
-	var containerText []bool // Расшифрованное сообщение
+	var containerText []bool // Decrypted message
 
 	flagOfCountingValue := true
 
@@ -364,7 +364,7 @@ func extractMessage(pixelsRec [][]Pixel, imgRec image.Image, dct [][]float64, ep
 }
 
 func makeMessage(lenOfMessage int) []uint {
-	message := make([]uint, lenOfMessage) // Пример сообщения
+	message := make([]uint, lenOfMessage) // Example of message
 	for i := 0; i < cap(message); i++ {
 		if i%2 == 1 {
 			message[i] = 0x00
