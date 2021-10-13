@@ -5,7 +5,7 @@ Steganographic system based on Koch's algorithm and forward and backward discret
 
 The Si bit is inserted by reversing the sign of the difference between two randomly selected coefficients in one block.
 
-![Alghorithm](C:\Users\User\GolandProjects\DCT\task.jpg)
+![Alghorithm](https://github.com/glebik555/steganographyDCT-Koch-/raw/master/task.jpg)
 
 # Running
 ```
