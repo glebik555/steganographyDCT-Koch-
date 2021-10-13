@@ -68,14 +68,17 @@ func makeBackDCT(arr [][]float64) [][]float64 {
 		if h+8 >= len(arr) {
 			break
 		}
+
 		for w := 0; w < len(arr[0]); w += 8 {
 			if w+8 >= len(arr[0]) {
 				break
 			}
+
 			for i := 0; i < 8; i++ {
 				for j := 0; j < 8; j++ {
+
 					sum := 0.0
-					Ck, Cl := 0.0, 0.0
+					var Ck, Cl float64
 					for k := 0; k < 8; k++ {
 						for l := 0; l < 8; l++ {
 							if k == 0 {
@@ -99,6 +102,7 @@ func makeBackDCT(arr [][]float64) [][]float64 {
 			}
 		}
 	}
+
 	return backDct
 }
 
@@ -115,12 +119,16 @@ func makeDCT(arr [][]Pixel) [][]float64 {
 		if h+8 >= len(arr) {
 			break
 		}
+
 		for w := 0; w < len(arr[0]); w += 8 {
+
 			if w+8 >= len(arr[0]) {
 				break
 			}
+
 			for k := 0; k < 8; k++ {
 				for l := 0; l < 8; l++ {
+
 					sum := 0.0
 
 					for i := 0; i < 8; i++ {
@@ -131,11 +139,13 @@ func makeDCT(arr [][]Pixel) [][]float64 {
 						}
 					}
 					Ck, Cl := 0.0, 0.0
+
 					if k == 0 {
 						Ck = 1.0 / 8.0
 					} else {
 						Ck = 2.0 / 8.0
 					}
+
 					if l == 0 {
 						Cl = 1.0 / 8.0
 					} else {
@@ -174,6 +184,7 @@ func getPixels(file io.Reader) ([][]Pixel, image.Image, error) {
 		}
 		pixels = append(pixels, row)
 	}
+
 	return pixels, img, nil
 }
 
@@ -269,6 +280,7 @@ func insertMessage(message []uint, dct [][]float64, img image.Image, epsilon flo
 							y += 7
 							x = width
 							countOfMessage++
+
 							continue
 						}
 						x--
@@ -285,6 +297,7 @@ func insertMessage(message []uint, dct [][]float64, img image.Image, epsilon flo
 							y += 7
 							x = width
 							countOfMessage++
+
 							continue
 						}
 						x--
@@ -341,6 +354,7 @@ func extractMessage(pixelsRec [][]Pixel, imgRec image.Image, dct [][]float64, ep
 						if x+8 >= widthRec {
 							y += 7
 							x = widthRec
+
 							continue
 						}
 						x--
@@ -352,6 +366,7 @@ func extractMessage(pixelsRec [][]Pixel, imgRec image.Image, dct [][]float64, ep
 						if x+8 >= widthRec {
 							y += 7
 							x = widthRec
+
 							continue
 						}
 						x--
@@ -360,6 +375,7 @@ func extractMessage(pixelsRec [][]Pixel, imgRec image.Image, dct [][]float64, ep
 			}
 		}
 	}
+
 	return containerText
 }
 

@@ -13,7 +13,7 @@ On the decryption side, a similar algorithm */
 
 
 func main(){
-	img, pixels := selectFile(path.Join("pic\\normal.bmp"))
+	img, pixels := selectFile(path.Join("pic/normal.bmp"))
 	message := makeMessage(100)
 	fmt.Println("Message := ", message)
 	dct := makeDCT(pixels) // Двумерный массив зеленого цвета.
@@ -21,10 +21,10 @@ func main(){
 	dct = insertMessage(message, dct, img, 20, pixels)
 	res := makeBackDCT(dct)
 
-	createPicture(img, pixels, res, path.Join("pic\\newImage20.bmp"))
+	createPicture(img, pixels, res, path.Join("pic/newImage20.bmp"))
 	fmt.Println("\n \t \t \t Decoding \t \t \t ")
 
-	img, pixels = selectFile(path.Join("pic\\newImage20.bmp"))
+	img, pixels = selectFile(path.Join("pic/newImage20.bmp"))
 	dct = makeDCT(pixels)
 	messageRec := extractMessage(pixels, img, dct, 0.0)
 	printBits(messageRec)
